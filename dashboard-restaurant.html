@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Restaurant — NK Delivery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans bg-slate-100 text-slate-800">
+
+  <!-- Mobile sidebar overlay -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-40 lg:hidden hidden" onclick="toggleSidebar()"></div>
+
+  <div class="flex h-screen overflow-hidden">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-60 bg-slate-900 text-white flex flex-col shrink-0 transform -translate-x-full lg:translate-x-0 lg:static lg:transform-none transition-transform duration-300">
+      <div class="p-5 border-b border-slate-800">
+        <a href="index.html" class="flex items-center hover:opacity-80 transition-opacity">
+          <img src="NK_LOGO.png" alt="NK Delivery" class="h-12 w-auto object-contain bg-white rounded-xl p-1">
+        </a>
+        <p class="text-xs text-slate-400 mt-0.5">Espace restaurant</p>
+      </div>
+      <!-- Restaurant info -->
+      <div class="p-4 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center">
+            <span class="text-xs font-black text-orange-400 leading-tight text-center">CHEZ<br>MARIE</span>
+          </div>
+          <div>
+            <p class="text-sm font-bold">Chez Marie</p>
+            <p class="text-xs text-green-400">Ouvert</p>
+          </div>
+        </div>
+      </div>
+      <!-- Nav -->
+      <nav class="flex-1 p-3 space-y-1">
+        <a href="dashboard-restaurant.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-orange-500/20 text-orange-400 font-semibold text-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Tableau de bord
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-sm transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          Commandes
+          <span class="ml-auto bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">3</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-sm transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          Menu &amp; Produits
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-sm transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          Statistiques
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-sm transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Personnel
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-sm transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+          Paramètres
+        </a>
+      </nav>
+      <!-- Footer -->
+      <div class="p-4 border-t border-slate-800">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center text-xs font-bold">MA</div>
+          <div>
+            <p class="text-xs font-semibold">Marie A.</p>
+            <p class="text-xs text-slate-400">Gérante</p>
+          </div>
+          <a href="login.html" title="Se déconnecter" class="ml-auto text-slate-400 hover:text-red-400 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 overflow-y-auto">
+
+      <!-- Top bar -->
+      <header class="bg-white border-b border-slate-200 px-4 md:px-8 py-4 flex items-center justify-between sticky top-0 z-10">
+        <div class="flex items-center gap-3">
+          <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors text-slate-600">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div>
+            <h1 class="text-base md:text-lg font-black text-slate-800">Tableau de bord</h1>
+            <p class="text-xs text-slate-500">Jeudi 12 juin 2026</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 md:gap-3">
+          <!-- Status toggle -->
+          <div class="hidden sm:flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2">
+            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+            <span class="text-sm font-semibold text-slate-700">Restaurant ouvert</span>
+            <button class="text-xs text-slate-400 hover:text-slate-600 ml-1">Fermer</button>
+          </div>
+          <!-- Notif -->
+          <button class="relative w-9 h-9 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-center hover:border-orange-300">
+            <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+            <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-orange-500 rounded-full"></span>
+          </button>
+        </div>
+      </header>
+
+      <div class="p-4 md:p-8">
+
+        <!-- KPI CARDS -->
+        <div class="grid grid-cols-2 xl:grid-cols-4 gap-3 md:gap-5 mb-6 md:mb-8">
+          <div class="bg-white rounded-2xl p-3 md:p-5 shadow-sm">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wide mb-2 md:mb-3 truncate">Chiffre d'affaires</p>
+            <p class="text-lg md:text-2xl xl:text-3xl font-black text-slate-800 leading-tight">48 750 <span class="text-xs md:text-base font-semibold text-slate-500">HTG</span></p>
+            <p class="text-xs text-green-600 font-semibold mt-1">+12% vs hier</p>
+          </div>
+          <div class="bg-white rounded-2xl p-3 md:p-5 shadow-sm">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wide mb-2 md:mb-3 truncate">Commandes du jour</p>
+            <p class="text-lg md:text-2xl xl:text-3xl font-black text-slate-800 leading-tight">34</p>
+            <p class="text-xs text-green-600 font-semibold mt-1">+5 vs hier</p>
+          </div>
+          <div class="bg-white rounded-2xl p-3 md:p-5 shadow-sm">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wide mb-2 md:mb-3 truncate">Ticket moyen</p>
+            <p class="text-lg md:text-2xl xl:text-3xl font-black text-slate-800 leading-tight">1 434 <span class="text-xs md:text-base font-semibold text-slate-500">HTG</span></p>
+            <p class="text-xs text-slate-400 font-semibold mt-1">Stable</p>
+          </div>
+          <div class="bg-white rounded-2xl p-3 md:p-5 shadow-sm">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wide mb-2 md:mb-3 truncate">Taux d'annulation</p>
+            <p class="text-lg md:text-2xl xl:text-3xl font-black text-slate-800 leading-tight">3 <span class="text-xs md:text-base font-semibold text-slate-500">%</span></p>
+            <p class="text-xs text-green-600 font-semibold mt-1">-1% cette semaine</p>
+          </div>
+        </div>
+
+        <!-- ORDERS + CHART -->
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
+
+          <!-- Active orders -->
+          <div class="xl:col-span-2 bg-white rounded-2xl shadow-sm">
+            <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+              <h2 class="font-bold text-slate-800">Commandes actives</h2>
+              <span class="bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full">3 en attente</span>
+            </div>
+            <div class="divide-y divide-slate-100">
+
+              <!-- Order 1: new -->
+              <div class="p-4">
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="bg-orange-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shrink-0">Nouvelle</span>
+                  <p class="text-sm font-bold text-slate-800">#NK-2406-0849</p>
+                  <span class="text-xs text-slate-400">il y a 2 min</span>
+                  <p class="font-black text-sm text-orange-500 ml-auto">2 050 HTG</p>
+                </div>
+                <p class="text-xs text-slate-500 truncate mb-2">Griot x2, Tassot cabrit x1, Jus corossol x2</p>
+                <div class="flex gap-2">
+                  <button class="flex-1 md:flex-none bg-green-500 hover:bg-green-600 text-white text-xs font-bold px-3 py-2 rounded-lg transition-colors">Accepter</button>
+                  <button class="flex-1 md:flex-none bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold px-3 py-2 rounded-lg transition-colors">Refuser</button>
+                </div>
+              </div>
+
+              <!-- Order 2: in prep -->
+              <div class="p-4">
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-full shrink-0">En prépa</span>
+                  <p class="text-sm font-bold text-slate-800">#NK-2406-0847</p>
+                  <span class="text-xs text-slate-400">il y a 18 min</span>
+                  <p class="font-black text-sm text-orange-500 ml-auto">1 665 HTG</p>
+                </div>
+                <p class="text-xs text-slate-500 truncate mb-2">Griot x1, Tassot cabrit x1, Jus naturel x2</p>
+                <div class="flex gap-2">
+                  <button class="flex-1 md:flex-none bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold px-3 py-2 rounded-lg transition-colors">Prête &rarr;</button>
+                </div>
+              </div>
+
+              <!-- Order 3: in delivery -->
+              <div class="p-4">
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="bg-purple-100 text-purple-700 text-xs font-bold px-2.5 py-1 rounded-full shrink-0">En livraison</span>
+                  <p class="text-sm font-bold text-slate-800">#NK-2406-0845</p>
+                  <span class="text-xs text-slate-400">il y a 35 min</span>
+                  <p class="font-black text-sm text-orange-500 ml-auto">1 400 HTG</p>
+                </div>
+                <p class="text-xs text-slate-500 truncate">Poulet en sauce x2, Bannann peze x2, Prestige x1</p>
+                <p class="text-xs text-slate-400 mt-1">Livreur : Jean-Pierre M.</p>
+              </div>
+
+            </div>
+            <div class="p-4 border-t border-slate-100">
+              <a href="#" class="text-sm text-orange-500 hover:text-orange-600 font-semibold">Voir toutes les commandes &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Top products -->
+          <div class="bg-white rounded-2xl shadow-sm">
+            <div class="p-5 border-b border-slate-100">
+              <h2 class="font-bold text-slate-800">Plats les plus vendus</h2>
+              <p class="text-xs text-slate-400">Aujourd'hui</p>
+            </div>
+            <div class="p-5 space-y-4">
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 bg-orange-500 text-white text-xs font-black rounded-full flex items-center justify-center shrink-0">1</span>
+                <div class="flex-1">
+                  <p class="text-sm font-semibold text-slate-800">Griot + Riz djon djon</p>
+                  <div class="w-full h-1.5 bg-slate-100 rounded-full mt-1">
+                    <div class="h-1.5 bg-orange-500 rounded-full" style="width: 85%"></div>
+                  </div>
+                </div>
+                <span class="text-sm font-bold text-slate-700 shrink-0">18 cmd</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 bg-orange-300 text-white text-xs font-black rounded-full flex items-center justify-center shrink-0">2</span>
+                <div class="flex-1">
+                  <p class="text-sm font-semibold text-slate-800">Tassot de cabrit</p>
+                  <div class="w-full h-1.5 bg-slate-100 rounded-full mt-1">
+                    <div class="h-1.5 bg-orange-300 rounded-full" style="width: 65%"></div>
+                  </div>
+                </div>
+                <span class="text-sm font-bold text-slate-700 shrink-0">12 cmd</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 bg-slate-300 text-white text-xs font-black rounded-full flex items-center justify-center shrink-0">3</span>
+                <div class="flex-1">
+                  <p class="text-sm font-semibold text-slate-800">Poulet en sauce</p>
+                  <div class="w-full h-1.5 bg-slate-100 rounded-full mt-1">
+                    <div class="h-1.5 bg-slate-300 rounded-full" style="width: 45%"></div>
+                  </div>
+                </div>
+                <span class="text-sm font-bold text-slate-700 shrink-0">9 cmd</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 bg-slate-200 text-slate-500 text-xs font-black rounded-full flex items-center justify-center shrink-0">4</span>
+                <div class="flex-1">
+                  <p class="text-sm font-semibold text-slate-800">Akra</p>
+                  <div class="w-full h-1.5 bg-slate-100 rounded-full mt-1">
+                    <div class="h-1.5 bg-slate-200 rounded-full" style="width: 30%"></div>
+                  </div>
+                </div>
+                <span class="text-sm font-bold text-slate-700 shrink-0">7 cmd</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Revenue chart placeholder -->
+        <div class="bg-white rounded-2xl shadow-sm p-6">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h2 class="font-bold text-slate-800">Évolution du chiffre d'affaires</h2>
+              <p class="text-xs text-slate-400">7 derniers jours</p>
+            </div>
+            <div class="flex gap-2">
+              <button class="text-xs font-semibold bg-orange-500 text-white px-3 py-1.5 rounded-lg">7 jours</button>
+              <button class="text-xs font-semibold text-slate-500 hover:text-slate-700 px-3 py-1.5 rounded-lg border border-slate-200">30 jours</button>
+            </div>
+          </div>
+          <!-- Fake bar chart -->
+          <div class="flex items-end gap-3 h-36">
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-orange-200 rounded-t-lg" style="height: 55%"></div>
+              <span class="text-xs text-slate-400">Lun</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-orange-200 rounded-t-lg" style="height: 70%"></div>
+              <span class="text-xs text-slate-400">Mar</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-orange-200 rounded-t-lg" style="height: 45%"></div>
+              <span class="text-xs text-slate-400">Mer</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-orange-200 rounded-t-lg" style="height: 80%"></div>
+              <span class="text-xs text-slate-400">Jeu</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-orange-200 rounded-t-lg" style="height: 60%"></div>
+              <span class="text-xs text-slate-400">Ven</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-orange-400 rounded-t-lg" style="height: 95%"></div>
+              <span class="text-xs text-slate-400">Sam</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-orange-500 rounded-t-lg" style="height: 100%"></div>
+              <span class="text-xs text-orange-500 font-semibold">Auj.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      const isOpen = !sidebar.classList.contains('-translate-x-full');
+      sidebar.classList.toggle('-translate-x-full');
+      overlay.classList.toggle('hidden');
+      document.body.style.overflow = isOpen ? '' : 'hidden';
+    }
+  </script>
+
+</body>
+</html>
