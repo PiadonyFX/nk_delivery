@@ -1,3 +1,4 @@
+@import './variables.css';
 .card-hover {
       transition: transform .2s, box-shadow .2s;
     }

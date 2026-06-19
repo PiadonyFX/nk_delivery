@@ -6,16 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NK Delivery — Commandez à Gonaïves</title>
   <script src="https://cdn.tailwindcss.com"></script> 
-  <style>
-    .card-hover {
-      transition: transform .2s, box-shadow .2s;
-    }
-
-    .card-hover:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, .12);
-    }
-  </style>
+  <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body class="font-sans bg-slate-50 text-slate-800">
@@ -23,19 +14,19 @@
   <!-- NAVBAR -->
   <nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between h-16">
-      <a href="index.html" class="flex items-center gap-0.5">
-        <img src="NK_LOGO.png" alt="NK Delivery" class="h-[50px] w-auto object-contain">
-        <span class="font-black text-base tracking-tight leading-none"><span class="text-orange-500">NK</span><span class="text-slate-800"> DELIVERY</span></span>
+      <a href="/pages/public/index.html" class="flex items-center gap-0.5">
+        <img src="/assets/images/NK_LOGO.png" alt="NK Delivery" class="h-[50px] w-auto object-contain">
+        <span class="font-black text-base tracking-tight leading-none"><span class="text-slate-800">DELIVERY</span></span>
       </a>
       <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-        <a href="index.html" class="text-orange-500 font-semibold">Accueil</a>
-        <a href="restaurants.html" class="hover:text-orange-500 transition-colors">Restaurants</a>
+        <a href="/pages/public/index.html" class="text-orange-500 font-semibold">Accueil</a>
+        <a href="/pages/public/restaurants.html" class="hover:text-orange-500 transition-colors">Restaurants</a>
         <a href="#comment" class="hover:text-orange-500 transition-colors">Comment ça marche</a>
-        <a href="signup.html" class="hover:text-orange-500 transition-colors">Devenir livreur</a>
+        <a href="/pages/auth/signup.html" class="hover:text-orange-500 transition-colors">Devenir livreur</a>
       </div>
       <div class="flex items-center gap-2 md:gap-3">
-        <a href="login.html" class="hidden sm:block text-sm font-semibold text-slate-700 px-4 py-2 hover:text-orange-500 transition-colors">Connexion</a>
-        <a href="signup.html" class="text-sm font-semibold bg-orange-500 hover:bg-orange-600 text-white px-4 md:px-5 py-2 rounded-lg transition-colors">S'inscrire</a>
+        <a href="/pages/auth/login.html" class="sm:block text-sm font-semibold text-slate-700 px-4 py-2 hover:text-orange-500 transition-colors">Connexion</a>
+        <a href="/pages/auth/signup.html" class="text-sm font-semibold bg-orange-500 hover:bg-orange-600 text-white px-4 md:px-5 py-2 rounded-lg transition-colors">S'inscrire</a>
         <button onclick="toggleMobileNav()" class="md:hidden p-2 rounded-lg hover:bg-slate-100 text-slate-600 transition-colors">
           <svg id="menuIcon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
           <svg id="closeIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -45,13 +36,10 @@
     <!-- Mobile menu -->
     <div id="mobileNav" class="hidden md:hidden border-t border-slate-100 bg-white">
       <div class="max-w-7xl mx-auto px-4 py-4 space-y-1">
-        <a href="index.html" class="block px-3 py-2.5 rounded-lg text-orange-500 font-semibold text-sm">Accueil</a>
-        <a href="restaurants.html" class="block px-3 py-2.5 rounded-lg text-slate-600 hover:text-orange-500 hover:bg-orange-50 text-sm transition-colors">Restaurants</a>
+        <a href="/pages/public/index.html" class="block px-3 py-2.5 rounded-lg text-orange-500 font-semibold text-sm">Accueil</a>
+        <a href="/pages/public/restaurants.html" class="block px-3 py-2.5 rounded-lg text-slate-600 hover:text-orange-500 hover:bg-orange-50 text-sm transition-colors">Restaurants</a>
         <a href="#comment" onclick="closeMobileNav()" class="block px-3 py-2.5 rounded-lg text-slate-600 hover:text-orange-500 hover:bg-orange-50 text-sm transition-colors">Comment ça marche</a>
-        <a href="signup.html" class="block px-3 py-2.5 rounded-lg text-slate-600 hover:text-orange-500 hover:bg-orange-50 text-sm transition-colors">Devenir livreur</a>
-        <div class="pt-3 border-t border-slate-100">
-          <a href="login.html" class="block px-3 py-2.5 rounded-lg text-slate-600 font-semibold text-sm hover:bg-slate-50 transition-colors">Connexion</a>
-        </div>
+        <a href="/pages/auth/signup.html" class="block px-3 py-2.5 rounded-lg text-slate-600 hover:text-orange-500 hover:bg-orange-50 text-sm transition-colors">Devenir livreur</a>
       </div>
     </div>
   </nav>
@@ -93,7 +81,7 @@
             <input type="text" placeholder="Votre adresse de livraison..."
               class="flex-1 outline-none text-slate-700 text-sm py-2.5 sm:py-2" />
           </div>
-          <a href="restaurants.html"
+          <a href="/pages/public/restaurants.html"
             class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-3 rounded-lg text-sm font-bold transition-colors text-center">
             Trouver un restaurant
           </a>
@@ -129,7 +117,7 @@
       <div class="grid grid-cols-4 md:grid-cols-8 gap-2 sm:gap-3 md:gap-5">
 
         <!-- Griot -->
-        <a href="restaurants.html" class="flex flex-col items-center gap-2.5 group cursor-pointer">
+        <a href="/pages/public/restaurants.html" class="flex flex-col items-center gap-2.5 group cursor-pointer">
           <div
             class="w-16 h-16 sm:w-18 md:w-20 md:h-20 rounded-xl md:rounded-2xl overflow-hidden shadow-md ring-2 ring-transparent group-hover:ring-orange-400 group-hover:shadow-orange-100 transition-all duration-200" style="height:clamp(56px,14vw,80px);width:clamp(56px,14vw,80px)">
             <img
@@ -140,7 +128,7 @@
         </a>
 
         <!-- Poulet -->
-        <a href="restaurants.html" class="flex flex-col items-center gap-2.5 group cursor-pointer">
+        <a href="/pages/public/restaurants.html" class="flex flex-col items-center gap-2.5 group cursor-pointer">
           <div
             class="w-16 h-16 sm:w-18 md:w-20 md:h-20 rounded-xl md:rounded-2xl overflow-hidden shadow-md ring-2 ring-transparent group-hover:ring-orange-400 group-hover:shadow-orange-100 transition-all duration-200" style="height:clamp(56px,14vw,80px);width:clamp(56px,14vw,80px)">
             <img
@@ -151,7 +139,7 @@
         </a>
 
         <!-- Lambi -->
-        <a href="restaurants.html" class="flex flex-col items-center gap-2.5 group cursor-pointer">
+        <a href="/pages/public/restaurants.html" class="flex flex-col items-center gap-2.5 group cursor-pointer">
           <div
             class="w-16 h-16 sm:w-18 md:w-20 md:h-20 rounded-xl md:rounded-2xl overflow-hidden shadow-md ring-2 ring-transparent group-hover:ring-orange-400 group-hover:shadow-orange-100 transition-all duration-200" style="height:clamp(56px,14vw,80px);width:clamp(56px,14vw,80px)">
             <img
@@ -162,7 +150,7 @@
         </a>
 
         <!-- Poisson -->
-        <a href="restaurants.html" class="flex flex-col items-center gap-2.5 group cursor-pointer">
+        <a href="/pages/public/restaurants.html" class="flex flex-col items-center gap-2.5 group cursor-pointer">
           <div
             class="w-16 h-16 sm:w-18 md:w-20 md:h-20 rounded-xl md:rounded-2xl overflow-hidden shadow-md ring-2 ring-transparent group-hover:ring-orange-400 group-hover:shadow-orange-100 transition-all duration-200" style="height:clamp(56px,14vw,80px);width:clamp(56px,14vw,80px)">
             <img
@@ -175,7 +163,7 @@
         </a>
 
         <!-- Riz & Pois -->
-        <a href="restaurants.html" class="flex flex-col items-center gap-2.5 group cursor-pointer">
+        <a href="/pages/public/restaurants.html" class="flex flex-col items-center gap-2.5 group cursor-pointer">
           <div
             class="w-16 h-16 sm:w-18 md:w-20 md:h-20 rounded-xl md:rounded-2xl overflow-hidden shadow-md ring-2 ring-transparent group-hover:ring-orange-400 group-hover:shadow-orange-100 transition-all duration-200" style="height:clamp(56px,14vw,80px);width:clamp(56px,14vw,80px)">
             <img
@@ -188,7 +176,7 @@
         </a>
 
         <!-- Légim -->
-        <a href="restaurants.html" class="flex flex-col items-center gap-2.5 group cursor-pointer">
+        <a href="/pages/public/restaurants.html" class="flex flex-col items-center gap-2.5 group cursor-pointer">
           <div
             class="w-16 h-16 sm:w-18 md:w-20 md:h-20 rounded-xl md:rounded-2xl overflow-hidden shadow-md ring-2 ring-transparent group-hover:ring-orange-400 group-hover:shadow-orange-100 transition-all duration-200" style="height:clamp(56px,14vw,80px);width:clamp(56px,14vw,80px)">
             <img
@@ -199,7 +187,7 @@
         </a>
 
         <!-- Desserts -->
-        <a href="restaurants.html" class="flex flex-col items-center gap-2.5 group cursor-pointer">
+        <a href="/pages/public/restaurants.html" class="flex flex-col items-center gap-2.5 group cursor-pointer">
           <div
             class="w-16 h-16 sm:w-18 md:w-20 md:h-20 rounded-xl md:rounded-2xl overflow-hidden shadow-md ring-2 ring-transparent group-hover:ring-orange-400 group-hover:shadow-orange-100 transition-all duration-200" style="height:clamp(56px,14vw,80px);width:clamp(56px,14vw,80px)">
             <img
@@ -212,7 +200,7 @@
         </a>
 
         <!-- Boissons -->
-        <a href="restaurants.html" class="flex flex-col items-center gap-2.5 group cursor-pointer">
+        <a href="/pages/public/restaurants.html" class="flex flex-col items-center gap-2.5 group cursor-pointer">
           <div
             class="w-16 h-16 sm:w-18 md:w-20 md:h-20 rounded-xl md:rounded-2xl overflow-hidden shadow-md ring-2 ring-transparent group-hover:ring-orange-400 group-hover:shadow-orange-100 transition-all duration-200" style="height:clamp(56px,14vw,80px);width:clamp(56px,14vw,80px)">
             <img
@@ -233,13 +221,13 @@
     <div class="max-w-7xl mx-auto px-4 md:px-6">
       <div class="flex items-center justify-between mb-5 md:mb-8">
         <h2 class="text-xl md:text-2xl font-bold text-slate-800">Restaurants populaires</h2>
-        <a href="restaurants.html" class="text-sm font-semibold text-orange-500 hover:text-orange-600">Voir tout
+        <a href="/pages/public/restaurants.html" class="text-sm font-semibold text-orange-500 hover:text-orange-600">Voir tout
           &rarr;</a>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
 
         <!-- Card 1 -->
-        <a href="restaurant.html" class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover">
+        <a href="/pages/public/restaurant.html" class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover">
           <div class="relative h-44 overflow-hidden">
             <img
               src="https://images.pexels.com/photos/37121088/pexels-photo-37121088.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -273,7 +261,7 @@
         </a>
 
         <!-- Card 2 -->
-        <a href="restaurant.html" class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover">
+        <a href="/pages/public/restaurant.html" class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover">
           <div class="relative h-44 overflow-hidden">
             <img
               src="https://images.pexels.com/photos/10911363/pexels-photo-10911363.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -305,7 +293,7 @@
         </a>
 
         <!-- Card 3 -->
-        <a href="restaurant.html" class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover">
+        <a href="/pages/public/restaurant.html" class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover">
           <div class="relative h-44 overflow-hidden">
             <img
               src="https://images.pexels.com/photos/13971298/pexels-photo-13971298.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -384,7 +372,7 @@
       <div class="flex items-stretch justify-center gap-2 flex-wrap">
 
         <!-- MonCash -->
-        <a href="payment-mobile.html?method=moncash" class="bg-white rounded-lg px-4 py-2.5 flex flex-col items-center gap-1.5 shadow min-w-[88px] hover:ring-2 hover:ring-orange-400 transition-all">
+        <a href="/pages/payment/payment-mobile.html?method=moncash" class="bg-white rounded-lg px-4 py-2.5 flex flex-col items-center gap-1.5 shadow min-w-[88px] hover:ring-2 hover:ring-orange-400 transition-all">
           <img src="https://moncashdfs.com/theme/images/logo.png" alt="MonCash" class="h-6 w-auto object-contain"
             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
           <div class="hidden h-6 items-center">
@@ -395,7 +383,7 @@
         </a>
 
         <!-- NatCash -->
-        <a href="payment-mobile.html?method=natcash" class="bg-white rounded-lg px-4 py-2.5 flex flex-col items-center gap-1.5 shadow min-w-[88px] hover:ring-2 hover:ring-orange-400 transition-all">
+        <a href="/pages/payment/payment-mobile.html?method=natcash" class="bg-white rounded-lg px-4 py-2.5 flex flex-col items-center gap-1.5 shadow min-w-[88px] hover:ring-2 hover:ring-orange-400 transition-all">
           <img src="https://natcash.ht/images/natcash-logo.png" alt="NatCash" class="h-6 w-auto object-contain"
             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
           <div class="hidden h-6 items-center">
@@ -466,7 +454,7 @@
         <h2 class="text-xl sm:text-2xl md:text-3xl font-black text-white mb-2">Votre restaurant n'est pas encore sur NK Delivery ?</h2>
         <p class="text-orange-100 text-sm md:text-base">Rejoignez notre réseau et augmentez vos ventes dès aujourd'hui.</p>
       </div>
-      <a href="signup.html"
+      <a href="/pages/auth/signup.html"
         class="bg-white hover:bg-orange-50 text-orange-600 font-bold px-8 py-4 rounded-xl transition-colors shadow-xl shrink-0 w-full sm:w-auto text-center">
         Inscrire mon restaurant &rarr;
       </a>
@@ -568,7 +556,7 @@
               <div class="bg-slate-900 px-3 pb-3 shrink-0">
                 <div class="flex items-center justify-between mb-2">
                   <div class="flex items-center gap-1.5">
-                    <img src="NK_LOGO.png" alt="NK" class="h-7 w-7 rounded-full object-cover object-top bg-white p-0.5">
+                    <img src="/assets/images/NK_LOGO.png" alt="NK" class="h-7 w-7 rounded-full object-cover object-top bg-white p-0.5">
                     <div>
                       <p class="text-white text-[10px] font-black leading-none">NK Delivery</p>
                       <p class="text-orange-400 text-[8px] leading-none mt-0.5">Gonaïves · Haïti</p>
@@ -693,23 +681,22 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         <div>
           <div class="mb-4">
-            <img src="NK_LOGO.png" alt="NK Delivery" class="h-14 w-auto object-contain bg-white rounded-xl p-1.5">
+            <img src="/assets/images/NK_LOGO.png" alt="NK Delivery" class="h-14 w-auto object-contain bg-white rounded-xl p-1.5">
           </div>
           <p class="text-slate-400 text-sm">La plateforme de référence pour commander vos repas à Gonaïves.</p>
         </div>
         <div>
           <h4 class="font-bold text-sm mb-4 text-slate-200">Liens utiles</h4>
           <ul class="space-y-2 text-sm text-slate-400">
-            <li><a href="restaurants.html" class="hover:text-orange-400">Restaurants</a></li>
+            <li><a href="/pages/public/restaurants.html" class="hover:text-orange-400">Restaurants</a></li>
             <li><a href="#comment" class="hover:text-orange-400">Comment ça marche</a></li>
-            <li><a href="signup.html" class="hover:text-orange-400">Devenir livreur</a></li>
+            <li><a href="/pages/auth/signup.html" class="hover:text-orange-400">Devenir livreur</a></li>
           </ul>
         </div>
         <div>
           <h4 class="font-bold text-sm mb-4 text-slate-200">Pour les restaurants</h4>
           <ul class="space-y-2 text-sm text-slate-400">
-            <li><a href="signup.html" class="hover:text-orange-400">Inscrire mon restaurant</a></li>
-            <li><a href="dashboard-restaurant.html" class="hover:text-orange-400">Espace restaurant</a></li>
+            <li><a href="/pages/" class="hover:text-orange-400">Inscrire mon restaurant</a></li>
           </ul>
         </div>
         <div>
