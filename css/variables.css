@@ -1,5 +1,9 @@
+@import './variables.css';
+@import '/components/cardresto.css';
+@import '/components/statusresto.css';
+@import '/components/navbar.css';
 :root{
     --color-primary: #f97316;
-    --color-light: #ffedd5;
-    --color-dark: #c2410c;
+    --color-light: #fff;
+    --color-dark: #0f172a;
 }

@@ -1,0 +1,29 @@
+@import './variables.css';
+@import '/components/cardresto.css';
+@import '/components/statusresto.css';
+@import '/components/navbar.css';
+.restaurant-status-fermer{
+  background-color: #ef4444; /* bg-red-500 */
+  color: white;             /* text-white */
+  font-size: 0.75rem;       /* text-xs */
+  font-weight: 700;         /* font-bold */
+
+  padding: 0.25rem 0.5rem;  /* py-1 px-2 */
+
+  border-radius: 9999px;    /* rounded-full */
+
+  display: inline-block;
+}
+.restaurant-status-ouvert{
+  background-color: #22c55e; /* bg-green-500 */
+  color: var(--color-light);             /* text-white */
+
+  font-size: 0.75rem;       /* text-xs */
+  font-weight: 700;         /* font-bold */
+
+  padding: 0.25rem 0.5rem;  /* py-1 px-2 */
+
+  border-radius: 9999px;    /* rounded-full */
+
+  display: inline-block;
+}

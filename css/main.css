@@ -1,9 +1,15 @@
 @import './variables.css';
-.card-hover {
-      transition: transform .2s, box-shadow .2s;
+@import '/components/cardresto.css';
+@import '/components/statusresto.css';
+@import '/components/navbar.css';
+@import '/components/cardplats.css';
+
+    /* paj restoran yo(filtre ki sekleksyone an) */
+.filter-active {
+      background: #F97316 !important;
+      color: white !important;
+      border-color: #F97316 !important;
     }
 
-    .card-hover:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, .12);
-    }
+/* paj restoran seleksyone(filtre ki sekleksyone an) */
+.tab-active { color: #F97316; border-bottom-color: #F97316; }

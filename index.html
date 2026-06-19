@@ -12,37 +12,102 @@
 <body class="font-sans bg-slate-50 text-slate-800">
 
   <!-- NAVBAR -->
-  <nav class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between h-16">
-      <a href="/pages/public/index.html" class="flex items-center gap-0.5">
-        <img src="/assets/images/NK_LOGO.png" alt="NK Delivery" class="h-[50px] w-auto object-contain">
-        <span class="font-black text-base tracking-tight leading-none"><span class="text-slate-800">DELIVERY</span></span>
+  <nav class="navbar">
+
+  <div class="navbar-container">
+
+    <!-- Logo -->
+    <a href="/index.html" class="navbar-logo">
+      <img
+        src="/assets/images/NK_LOGO.png"
+        alt="NK Delivery"
+        class="logo-image"
+      >
+
+      <span class="logo-text">
+        <span>DELIVERY</span>
+      </span>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="desktop-nav">
+
+      <a href="/index.html" class="nav-link active">
+        Accueil
       </a>
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-        <a href="/pages/public/index.html" class="text-orange-500 font-semibold">Accueil</a>
-        <a href="/pages/public/restaurants.html" class="hover:text-orange-500 transition-colors">Restaurants</a>
-        <a href="#comment" class="hover:text-orange-500 transition-colors">Comment ça marche</a>
-        <a href="/pages/auth/signup.html" class="hover:text-orange-500 transition-colors">Devenir livreur</a>
-      </div>
-      <div class="flex items-center gap-2 md:gap-3">
-        <a href="/pages/auth/login.html" class="sm:block text-sm font-semibold text-slate-700 px-4 py-2 hover:text-orange-500 transition-colors">Connexion</a>
-        <a href="/pages/auth/signup.html" class="text-sm font-semibold bg-orange-500 hover:bg-orange-600 text-white px-4 md:px-5 py-2 rounded-lg transition-colors">S'inscrire</a>
-        <button onclick="toggleMobileNav()" class="md:hidden p-2 rounded-lg hover:bg-slate-100 text-slate-600 transition-colors">
-          <svg id="menuIcon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          <svg id="closeIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
+
+      <a href="/pages/public/restaurants.html" class="nav-link">
+        Restaurants
+      </a>
+      
+      <a href="/index.html#comment" class="nav-link">
+        Mode de fonctionnement
+      </a>
+
+      <a href="/pages/auth/signup.html" class="nav-link">
+        Devenir livreur
+      </a>
+
     </div>
-    <!-- Mobile menu -->
-    <div id="mobileNav" class="hidden md:hidden border-t border-slate-100 bg-white">
-      <div class="max-w-7xl mx-auto px-4 py-4 space-y-1">
-        <a href="/pages/public/index.html" class="block px-3 py-2.5 rounded-lg text-orange-500 font-semibold text-sm">Accueil</a>
-        <a href="/pages/public/restaurants.html" class="block px-3 py-2.5 rounded-lg text-slate-600 hover:text-orange-500 hover:bg-orange-50 text-sm transition-colors">Restaurants</a>
-        <a href="#comment" onclick="closeMobileNav()" class="block px-3 py-2.5 rounded-lg text-slate-600 hover:text-orange-500 hover:bg-orange-50 text-sm transition-colors">Comment ça marche</a>
-        <a href="/pages/auth/signup.html" class="block px-3 py-2.5 rounded-lg text-slate-600 hover:text-orange-500 hover:bg-orange-50 text-sm transition-colors">Devenir livreur</a>
-      </div>
+
+    <!-- Actions -->
+    <div class="navbar-actions">
+
+      <a
+        href="/pages/auth/login.html"
+        class="btn-login"
+      >
+        Connexion
+      </a>
+
+      <a
+        href="/pages/auth/signup.html"
+        class="btn-signup"
+      >
+        S'inscrire
+      </a>
+
+      <button
+        onclick="toggleMobileNav()"
+        class="mobile-btn"
+      >
+
+        <svg id="menuIcon" class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+
+        <svg id="closeIcon" class="icon hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+
+      </button>
+
     </div>
-  </nav>
+
+  </div>
+
+  <!-- Mobile -->
+  <div id="mobileNav" class="mobile-nav hidden">
+
+    <div class="mobile-nav-container">
+
+      <a href="/index.html" class="mobile-link active">
+        Accueil
+      </a>
+
+      <a href="/pages/public/restaurants.html" class="mobile-link">
+        Restaurants
+      </a>
+
+      <a href="/pages/auth/signup.html" class="mobile-link">
+        Devenir livreur
+      </a>
+
+    </div>
+
+  </div>
+
+</nav>
 
   <!-- HERO — photo plein écran -->
   <section class="relative text-white overflow-hidden" style="min-height:clamp(520px,92vh,720px);">
@@ -111,7 +176,7 @@
   </section>
 
   <!-- CATEGORIES -->
-  <section class="py-10 md:py-14 bg-white">
+  <section class="py-5 md:py-14 bg-white">
     <div class="max-w-7xl mx-auto px-4 md:px-6">
       <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-5 md:mb-8">Que souhaitez-vous manger ?</h2>
       <div class="grid grid-cols-4 md:grid-cols-8 gap-2 sm:gap-3 md:gap-5">
@@ -217,7 +282,7 @@
   </section>
 
   <!-- FEATURED RESTAURANTS -->
-  <section class="py-10 md:py-14 bg-slate-50">
+  <section class="py-10 md:py-5 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 md:px-6">
       <div class="flex items-center justify-between mb-5 md:mb-8">
         <h2 class="text-xl md:text-2xl font-bold text-slate-800">Restaurants populaires</h2>
@@ -227,7 +292,8 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
 
         <!-- Card 1 -->
-        <a href="/pages/public/restaurant.html" class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover">
+         <div class="cardresto">
+        <a href="/pages/public/restaurant.html" class="rounded-2xl overflow-hidden shadow-sm card-hover">
           <div class="relative h-44 overflow-hidden">
             <img
               src="https://images.pexels.com/photos/37121088/pexels-photo-37121088.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -259,9 +325,11 @@
             </div>
           </div>
         </a>
+        </div>
 
         <!-- Card 2 -->
-        <a href="/pages/public/restaurant.html" class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover">
+         <div class="cardresto">
+        <a href="/pages/public/restaurant.html" class="rounded-2xl overflow-hidden shadow-sm card-hover">
           <div class="relative h-44 overflow-hidden">
             <img
               src="https://images.pexels.com/photos/10911363/pexels-photo-10911363.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -291,9 +359,11 @@
             </div>
           </div>
         </a>
+        </div>
 
         <!-- Card 3 -->
-        <a href="/pages/public/restaurant.html" class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover">
+         <div class="cardresto">
+        <a href="/pages/public/restaurant.html" class=" rounded-2xl overflow-hidden shadow-sm card-hover">
           <div class="relative h-44 overflow-hidden">
             <img
               src="https://images.pexels.com/photos/13971298/pexels-photo-13971298.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -322,6 +392,7 @@
             </div>
           </div>
         </a>
+        </div>
 
       </div>
     </div>
@@ -708,7 +779,7 @@
           </ul>
         </div>
       </div>
-      <div class="border-t border-slate-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-2">
+      <div class="border-t border-slate-800 pt-6 flex flex-col md:flex-row items-center justify-center gap-2">
         <p class="text-slate-500 text-xs">© 2026 NK Delivery. Tous droits réservés.</p>
         <div class="flex gap-4 text-xs text-slate-500">
           <a href="#" class="hover:text-slate-300">Politique de confidentialité</a>

@@ -1,0 +1,22 @@
+@import './variables.css';
+@import '/components/cardresto.css';
+@import '/components/statusresto.css';
+@import '/components/navbar.css';
+.cardresto{
+    background-color: var(--color-light);
+    border-radius: 1rem;
+    border: 1px solid var(--color-primary);
+}
+.cardresto img{
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    object-fit: cover;
+}
+.cardresto{
+      transition: transform .2s, box-shadow .2s;
+    }
+
+.cardresto:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, .12);
+    }

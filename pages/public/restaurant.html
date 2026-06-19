@@ -1,119 +1,185 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chez Marie — NK Delivery</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    .tab-active { color: #F97316; border-bottom-color: #F97316; }
-  </style>
+  <link rel="stylesheet" href="/css/main.css">
 </head>
+
 <body class="font-sans bg-slate-50 text-slate-800">
 
   <!-- NAVBAR -->
-  <nav class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between h-16">
-      <a href="index.html" class="flex items-center gap-0.5">
-        <img src="NK_LOGO.png" alt="NK Delivery" class="h-[50px] w-auto object-contain">
-        <span class="font-black text-base tracking-tight leading-none"><span class="text-orange-500">NK</span><span class="text-slate-800"> DELIVERY</span></span>
+  <nav class="navbar">
+
+    <div class="navbar-container">
+
+      <!-- Logo -->
+      <a href="/index.html" class="navbar-logo">
+        <img src="/assets/images/NK_LOGO.png" alt="NK Delivery" class="logo-image">
+
+        <span class="logo-text">
+          <span>DELIVERY</span>
+        </span>
       </a>
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-        <a href="index.html" class="hover:text-orange-500">Accueil</a>
-        <a href="restaurants.html" class="text-orange-500 font-semibold">Restaurants</a>
-        <a href="index.html#comment" class="hover:text-orange-500">Comment ça marche</a>
-        <a href="signup.html" class="hover:text-orange-500">Devenir livreur</a>
+
+      <!-- Desktop nav -->
+      <div class="desktop-nav">
+
+        <a href="/index.html" class="nav-link">
+          Accueil
+        </a>
+
+        <a href="/pages/public/restaurants.html" class="nav-link active">
+          Restaurants
+        </a>
+
+        <a href="/pages/auth/signup.html" class="nav-link">
+          Devenir livreur
+        </a>
+
       </div>
-      <div class="flex items-center gap-2 md:gap-3">
-        <a href="login.html" class="hidden sm:block text-sm font-semibold text-slate-700 px-4 py-2 hover:text-orange-500">Connexion</a>
-        <a href="signup.html" class="hidden sm:block text-sm font-semibold bg-orange-500 text-white px-5 py-2 rounded-lg hover:bg-orange-600">S'inscrire</a>
-        <!-- Cart icon for mobile -->
-        <button onclick="toggleCart()" class="lg:hidden relative p-2 rounded-lg bg-orange-500 text-white">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-          <span class="absolute -top-1 -right-1 w-4 h-4 bg-white text-orange-500 text-xs font-black rounded-full flex items-center justify-center">4</span>
+
+      <!-- Actions -->
+      <div class="navbar-actions">
+
+        <a href="/pages/auth/login.html" class="btn-login">
+          Connexion
+        </a>
+
+        <a href="/pages/auth/signup.html" class="btn-signup">
+          S'inscrire
+        </a>
+
+        <button onclick="toggleMobileNav()" class="mobile-btn">
+
+          <svg id="menuIcon" class="icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+
+          <svg id="closeIcon" class="icon hidden" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+
         </button>
-        <button onclick="toggleMobileNav()" class="md:hidden p-2 rounded-lg hover:bg-slate-100 text-slate-600 transition-colors">
-          <svg id="menuIcon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          <svg id="closeIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
+
       </div>
+
     </div>
-    <!-- Mobile menu -->
-    <div id="mobileNav" class="hidden md:hidden border-t border-slate-100 bg-white">
-      <div class="max-w-7xl mx-auto px-4 py-4 space-y-1">
-        <a href="index.html" class="block px-3 py-2.5 rounded-lg text-slate-600 hover:text-orange-500 hover:bg-orange-50 text-sm transition-colors">Accueil</a>
-        <a href="restaurants.html" class="block px-3 py-2.5 rounded-lg text-orange-500 font-semibold text-sm">Restaurants</a>
-        <a href="index.html#comment" class="block px-3 py-2.5 rounded-lg text-slate-600 hover:text-orange-500 hover:bg-orange-50 text-sm transition-colors">Comment ça marche</a>
-        <a href="signup.html" class="block px-3 py-2.5 rounded-lg text-slate-600 hover:text-orange-500 hover:bg-orange-50 text-sm transition-colors">Devenir livreur</a>
-        <div class="pt-3 border-t border-slate-100">
-          <a href="login.html" class="block px-3 py-2.5 rounded-lg text-slate-600 font-semibold text-sm hover:bg-slate-50">Connexion</a>
-        </div>
+
+    <!-- Mobile -->
+    <div id="mobileNav" class="mobile-nav hidden">
+
+      <div class="mobile-nav-container">
+
+        <a href="/index.html" class="mobile-link active">
+          Accueil
+        </a>
+
+        <a href="/pages/public/restaurants.html" class="mobile-link">
+          Restaurants
+        </a>
+
+        <a href="/pages/auth/signup.html" class="mobile-link">
+          Devenir livreur
+        </a>
+
       </div>
+
     </div>
+
   </nav>
 
   <!-- Mobile cart overlay -->
   <div id="cartOverlay" class="fixed inset-0 bg-black/50 z-40 lg:hidden hidden" onclick="toggleCart()"></div>
   <!-- Mobile cart drawer -->
-  <div id="cartDrawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white shadow-xl transform translate-x-full lg:hidden transition-transform duration-300 overflow-y-auto">
+  <div id="cartDrawer"
+    class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white shadow-xl transform translate-x-full lg:hidden transition-transform duration-300 overflow-y-auto">
     <div class="p-5">
       <div class="flex items-center justify-between mb-4">
         <h3 class="font-bold text-slate-800 text-lg">Mon panier</h3>
         <button onclick="toggleCart()" class="text-slate-400 hover:text-slate-600">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
       </div>
       <div class="space-y-3 mb-4">
         <div class="flex items-center gap-3">
-          <img src="https://images.pexels.com/photos/37121088/pexels-photo-37121088.jpeg?auto=compress&cs=tinysrgb&w=80" class="w-10 h-10 rounded-lg object-cover shrink-0"/>
-          <div class="flex-1 min-w-0"><p class="text-sm font-semibold text-slate-800 truncate">Griot + Riz djon djon</p><p class="text-xs text-slate-500">750 HTG</p></div>
+          <img src="https://images.pexels.com/photos/37121088/pexels-photo-37121088.jpeg?auto=compress&cs=tinysrgb&w=80"
+            class="w-10 h-10 rounded-lg object-cover shrink-0" />
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-semibold text-slate-800 truncate">Griot + Riz djon djon</p>
+            <p class="text-xs text-slate-500">750 HTG</p>
+          </div>
           <div class="flex items-center gap-1.5 shrink-0">
-            <button class="w-6 h-6 rounded-md border border-slate-200 text-slate-600 text-sm font-bold hover:border-orange-400 flex items-center justify-center">&minus;</button>
+            <button
+              class="w-6 h-6 rounded-md border border-slate-200 text-slate-600 text-sm font-bold hover:border-orange-400 flex items-center justify-center">&minus;</button>
             <span class="text-sm font-bold w-4 text-center">1</span>
-            <button class="w-6 h-6 rounded-md bg-orange-500 text-white text-sm font-bold flex items-center justify-center">+</button>
+            <button
+              class="w-6 h-6 rounded-md bg-orange-500 text-white text-sm font-bold flex items-center justify-center">+</button>
           </div>
         </div>
         <div class="flex items-center gap-3">
-          <img src="https://images.pexels.com/photos/34837746/pexels-photo-34837746.jpeg?auto=compress&cs=tinysrgb&w=80" class="w-10 h-10 rounded-lg object-cover shrink-0"/>
-          <div class="flex-1 min-w-0"><p class="text-sm font-semibold text-slate-800 truncate">Tassot de cabrit</p><p class="text-xs text-slate-500">850 HTG</p></div>
+          <img src="https://images.pexels.com/photos/34837746/pexels-photo-34837746.jpeg?auto=compress&cs=tinysrgb&w=80"
+            class="w-10 h-10 rounded-lg object-cover shrink-0" />
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-semibold text-slate-800 truncate">Tassot de cabrit</p>
+            <p class="text-xs text-slate-500">850 HTG</p>
+          </div>
           <div class="flex items-center gap-1.5 shrink-0">
-            <button class="w-6 h-6 rounded-md border border-slate-200 text-slate-600 text-sm font-bold hover:border-orange-400 flex items-center justify-center">&minus;</button>
+            <button
+              class="w-6 h-6 rounded-md border border-slate-200 text-slate-600 text-sm font-bold hover:border-orange-400 flex items-center justify-center">&minus;</button>
             <span class="text-sm font-bold w-4 text-center">1</span>
-            <button class="w-6 h-6 rounded-md bg-orange-500 text-white text-sm font-bold flex items-center justify-center">+</button>
+            <button
+              class="w-6 h-6 rounded-md bg-orange-500 text-white text-sm font-bold flex items-center justify-center">+</button>
           </div>
         </div>
         <div class="flex items-center gap-3">
-          <img src="https://images.pexels.com/photos/17612822/pexels-photo-17612822.jpeg?auto=compress&cs=tinysrgb&w=80" class="w-10 h-10 rounded-lg object-cover shrink-0"/>
-          <div class="flex-1 min-w-0"><p class="text-sm font-semibold text-slate-800 truncate">Jus naturel frais</p><p class="text-xs text-slate-500">150 HTG</p></div>
+          <img src="https://images.pexels.com/photos/17612822/pexels-photo-17612822.jpeg?auto=compress&cs=tinysrgb&w=80"
+            class="w-10 h-10 rounded-lg object-cover shrink-0" />
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-semibold text-slate-800 truncate">Jus naturel frais</p>
+            <p class="text-xs text-slate-500">150 HTG</p>
+          </div>
           <div class="flex items-center gap-1.5 shrink-0">
-            <button class="w-6 h-6 rounded-md border border-slate-200 text-slate-600 text-sm font-bold hover:border-orange-400 flex items-center justify-center">&minus;</button>
+            <button
+              class="w-6 h-6 rounded-md border border-slate-200 text-slate-600 text-sm font-bold hover:border-orange-400 flex items-center justify-center">&minus;</button>
             <span class="text-sm font-bold w-4 text-center">2</span>
-            <button class="w-6 h-6 rounded-md bg-orange-500 text-white text-sm font-bold flex items-center justify-center">+</button>
+            <button
+              class="w-6 h-6 rounded-md bg-orange-500 text-white text-sm font-bold flex items-center justify-center">+</button>
           </div>
         </div>
       </div>
       <div class="flex gap-2 mb-4">
-        <input type="text" placeholder="Code promo..." class="flex-1 text-xs border border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-orange-400" value="MARIE15"/>
+        <input type="text" placeholder="Code promo..."
+          class="flex-1 text-xs border border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-orange-400"
+          value="MARIE15" />
         <button class="bg-green-100 text-green-700 text-xs font-semibold px-3 py-2 rounded-lg">Appliqué</button>
       </div>
       <div class="border-t border-slate-100 pt-4 space-y-2 text-sm mb-4">
         <div class="flex justify-between text-slate-600"><span>Sous-total</span><span>1 900 HTG</span></div>
         <div class="flex justify-between text-slate-600"><span>Livraison</span><span>50 HTG</span></div>
-        <div class="flex justify-between text-green-600 font-medium"><span>Réduction (-15%)</span><span>-285 HTG</span></div>
-        <div class="flex justify-between font-black text-slate-800 text-base border-t border-slate-100 pt-2 mt-2"><span>Total</span><span class="text-orange-500">1 665 HTG</span></div>
+        <div class="flex justify-between text-green-600 font-medium"><span>Réduction (-15%)</span><span>-285 HTG</span>
+        </div>
+        <div class="flex justify-between font-black text-slate-800 text-base border-t border-slate-100 pt-2 mt-2">
+          <span>Total</span><span class="text-orange-500">1 665 HTG</span>
+        </div>
       </div>
-      <button onclick="location.href='payment-mobile.html?method=moncash'" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-xl text-center transition-colors text-sm">Commander — 1 665 HTG →</button>
+      <button onclick="location.href='payment-mobile.html?method=moncash'"
+        class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-xl text-center transition-colors text-sm">Commander
+        — 1 665 HTG →</button>
       <p class="text-xs text-slate-400 text-center mt-2">Livraison estimée : 25–35 min</p>
     </div>
   </div>
 
   <!-- RESTAURANT COVER -->
   <div class="relative h-56 overflow-hidden">
-    <img
-      src="https://images.pexels.com/photos/13971298/pexels-photo-13971298.jpeg?auto=compress&cs=tinysrgb&w=1260"
-      alt="Chez Marie — Griot, riz et plats haïtiens traditionnels"
-      class="w-full h-full object-cover"
-    />
+    <img src="https://images.pexels.com/photos/13971298/pexels-photo-13971298.jpeg?auto=compress&cs=tinysrgb&w=1260"
+      alt="Chez Marie — Griot, riz et plats haïtiens traditionnels" class="w-full h-full object-cover" />
     <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
   </div>
 
@@ -122,12 +188,10 @@
     <div class="max-w-7xl mx-auto px-6 py-5">
       <div class="flex items-start gap-5">
         <!-- Logo -->
-        <div class="w-20 h-20 bg-orange-50 border-4 border-white rounded-2xl shadow-lg flex items-center justify-center -mt-10 relative z-10 shrink-0 overflow-hidden">
-          <img
-            src="https://images.pexels.com/photos/37121088/pexels-photo-37121088.jpeg?auto=compress&cs=tinysrgb&w=80"
-            alt="Chez Marie"
-            class="w-full h-full object-cover"
-          />
+        <div
+          class="w-20 h-20 bg-orange-50 border-4 border-white rounded-2xl shadow-lg flex items-center justify-center -mt-10 relative z-10 shrink-0 overflow-hidden">
+          <img src="https://images.pexels.com/photos/37121088/pexels-photo-37121088.jpeg?auto=compress&cs=tinysrgb&w=80"
+            alt="Chez Marie" class="w-full h-full object-cover" />
         </div>
         <div class="flex-1">
           <div class="flex items-start justify-between">
@@ -139,11 +203,18 @@
           </div>
           <div class="flex items-center gap-6 mt-3 text-sm text-slate-600 flex-wrap">
             <div class="flex items-center gap-1">
-              <svg class="w-4 h-4 fill-amber-400" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 fill-amber-400" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
               <strong>4.9</strong> <span class="text-slate-400">(128 avis)</span>
             </div>
             <div class="flex items-center gap-1">
-              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 6v6l4 2"/></svg>
+              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <path stroke-linecap="round" d="M12 6v6l4 2" />
+              </svg>
               <span>25–35 min</span>
             </div>
             <span>50 HTG livraison</span>
@@ -156,11 +227,18 @@
     <div class="max-w-7xl mx-auto px-6 border-t border-slate-100">
       <div class="flex gap-6 overflow-x-auto">
         <button class="tab-active text-sm font-semibold py-3 border-b-2 whitespace-nowrap">Populaires</button>
-        <button class="text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Entrées &amp; Fritay</button>
-        <button class="text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Plats principaux</button>
-        <button class="text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Accompagnements</button>
-        <button class="text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Boissons</button>
-        <button class="text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Desserts</button>
+        <button
+          class="text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Entrées
+          &amp; Fritay</button>
+        <button
+          class="text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Plats
+          principaux</button>
+        <button
+          class="text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Accompagnements</button>
+        <button
+          class="text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Boissons</button>
+        <button
+          class="text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Desserts</button>
       </div>
     </div>
   </div>
@@ -173,208 +251,103 @@
 
       <!-- Promo -->
       <div class="bg-orange-50 border border-orange-200 rounded-xl p-4 mb-6 flex items-center gap-3">
-        <div class="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center text-white font-black text-sm shrink-0">%</div>
+        <div
+          class="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center text-white font-black text-sm shrink-0">
+          %</div>
         <div>
           <p class="font-bold text-orange-700 text-sm">Offre du jour : -15% sur tous les plats</p>
           <p class="text-xs text-orange-600">Valable jusqu'à 22h00 ce soir. Code promo : <strong>MARIE15</strong></p>
         </div>
       </div>
 
-      <!-- Section: Les incontournables -->
-      <section class="mb-8">
-        <h2 class="text-lg font-bold text-slate-800 mb-4">Les incontournables</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- SECTION MENU -->
+      <section class="menu-section">
 
-          <!-- Griot + Riz djon djon -->
-          <div class="bg-white rounded-xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+        <h2 class="menu-section-title">Les incontournables</h2>
+
+        <div class="menu-grid">
+
+          <!-- CARD -->
+          <div class="menu-card">
+
             <img
               src="https://images.pexels.com/photos/37121088/pexels-photo-37121088.jpeg?auto=compress&cs=tinysrgb&w=160"
-              alt="Griot — porc frit croustillant servi dans des coupes de plantain avec pikliz"
-              class="w-20 h-20 rounded-xl object-cover shrink-0"
-            />
-            <div class="flex-1">
-              <h3 class="font-bold text-slate-800 text-sm">Griot + Riz djon djon</h3>
-              <p class="text-xs text-slate-500 mt-0.5 mb-2">Porc frit mariné, riz au champignon noir, pois rouge, bannann peze et pikliz.</p>
-              <div class="flex items-center justify-between">
-                <span class="font-black text-orange-500">750 HTG</span>
-                <button class="bg-orange-500 hover:bg-orange-600 text-white w-8 h-8 rounded-lg font-bold text-lg flex items-center justify-center transition-colors">+</button>
+              alt="Griot" class="menu-image">
+
+            <div class="menu-body">
+
+              <h3 class="menu-title">Griot + Riz djon djon</h3>
+
+              <p class="menu-description">
+                Porc frit mariné, riz au champignon noir, pois rouge, bannann peze et pikliz.
+              </p>
+
+              <div class="menu-footer">
+
+                <span class="menu-price">750 HTG</span>
+
+                <button class="menu-add-btn">+</button>
+
               </div>
+
             </div>
           </div>
 
-          <!-- Tassot de cabrit -->
-          <div class="bg-white rounded-xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+          <!-- CARD 2 -->
+          <div class="menu-card">
             <img
               src="https://images.pexels.com/photos/34837746/pexels-photo-34837746.jpeg?auto=compress&cs=tinysrgb&w=160"
-              alt="Tassot de cabrit — viande de chèvre frite en morceaux dorés"
-              class="w-20 h-20 rounded-xl object-cover shrink-0"
-            />
-            <div class="flex-1">
-              <h3 class="font-bold text-slate-800 text-sm">Tassot de cabrit</h3>
-              <p class="text-xs text-slate-500 mt-0.5 mb-2">Cabrit séché et frit, servi avec riz et pois noirs, légumes et sos ti-malice.</p>
-              <div class="flex items-center justify-between">
-                <span class="font-black text-orange-500">850 HTG</span>
-                <button class="bg-orange-500 hover:bg-orange-600 text-white w-8 h-8 rounded-lg font-bold text-lg flex items-center justify-center transition-colors">+</button>
+              alt="Tassot de cabrit" class="menu-image">
+
+            <div class="menu-body">
+              <h3 class="menu-title">Tassot de cabrit</h3>
+
+              <p class="menu-description">
+                Cabrit séché et frit, servi avec riz et pois noirs, légumes et sos ti-malice.
+              </p>
+
+              <div class="menu-footer">
+                <span class="menu-price">850 HTG</span>
+                <button class="menu-add-btn">+</button>
               </div>
             </div>
           </div>
 
-          <!-- Poulet en sauce haïtienne -->
-          <div class="bg-white rounded-xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+          <!-- CARD 3 -->
+          <div class="menu-card">
             <img
               src="https://images.pexels.com/photos/34134206/pexels-photo-34134206.jpeg?auto=compress&cs=tinysrgb&w=160"
-              alt="Poulet en sauce haïtienne avec riz et pois"
-              class="w-20 h-20 rounded-xl object-cover shrink-0"
-            />
-            <div class="flex-1">
-              <h3 class="font-bold text-slate-800 text-sm">Poulet en sauce haïtienne</h3>
-              <p class="text-xs text-slate-500 mt-0.5 mb-2">Poulet mijoté en sauce créole épicée, servi avec riz blanc et pois.</p>
-              <div class="flex items-center justify-between">
-                <span class="font-black text-orange-500">600 HTG</span>
-                <button class="bg-orange-500 hover:bg-orange-600 text-white w-8 h-8 rounded-lg font-bold text-lg flex items-center justify-center transition-colors">+</button>
+              alt="Poulet" class="menu-image">
+
+            <div class="menu-body">
+              <h3 class="menu-title">Poulet en sauce haïtienne</h3>
+
+              <p class="menu-description">
+                Poulet mijoté en sauce créole épicée, servi avec riz blanc et pois.
+              </p>
+
+              <div class="menu-footer">
+                <span class="menu-price">600 HTG</span>
+                <button class="menu-add-btn">+</button>
               </div>
             </div>
           </div>
 
-          <!-- Tassot de bœuf -->
-          <div class="bg-white rounded-xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
-            <img
-              src="https://images.pexels.com/photos/724298/pexels-photo-724298.jpeg?auto=compress&cs=tinysrgb&w=160"
-              alt="Tassot de bœuf"
-              class="w-20 h-20 rounded-xl object-cover shrink-0"
-            />
-            <div class="flex-1">
-              <h3 class="font-bold text-slate-800 text-sm">Tassot de bœuf</h3>
-              <p class="text-xs text-slate-500 mt-0.5 mb-2">Bœuf frit à la haïtienne, bannann peze, riz djon djon et pikliz maison.</p>
-              <div class="flex items-center justify-between">
-                <span class="font-black text-orange-500">800 HTG</span>
-                <button class="bg-orange-500 hover:bg-orange-600 text-white w-8 h-8 rounded-lg font-bold text-lg flex items-center justify-center transition-colors">+</button>
-              </div>
-            </div>
-          </div>
+          <!-- CARD 4 -->
+          <div class="menu-card">
+            <img src="https://images.pexels.com/photos/724298/pexels-photo-724298.jpeg?auto=compress&cs=tinysrgb&w=160"
+              alt="Tassot boeuf" class="menu-image">
 
-        </div>
-      </section>
+            <div class="menu-body">
+              <h3 class="menu-title">Tassot de bœuf</h3>
 
-      <!-- Section: Entrées & Fritay -->
-      <section class="mb-8">
-        <h2 class="text-lg font-bold text-slate-800 mb-4">Entrées &amp; Fritay</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <p class="menu-description">
+                Bœuf frit à la haïtienne, bannann peze, riz djon djon et pikliz maison.
+              </p>
 
-          <!-- Akra -->
-          <div class="bg-white rounded-xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
-            <img
-              src="https://images.pexels.com/photos/1059943/pexels-photo-1059943.jpeg?auto=compress&cs=tinysrgb&w=160"
-              alt="Akra — beignets de malanga"
-              class="w-20 h-20 rounded-xl object-cover shrink-0"
-            />
-            <div class="flex-1">
-              <h3 class="font-bold text-slate-800 text-sm">Akra (beignets de malanga)</h3>
-              <p class="text-xs text-slate-500 mt-0.5 mb-2">6 beignets de malanga frits croustillants, servis avec pikliz.</p>
-              <div class="flex items-center justify-between">
-                <span class="font-black text-orange-500">200 HTG</span>
-                <button class="bg-orange-500 hover:bg-orange-600 text-white w-8 h-8 rounded-lg font-bold text-lg flex items-center justify-center transition-colors">+</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Bannann peze -->
-          <div class="bg-white rounded-xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
-            <img
-              src="https://images.pexels.com/photos/12362305/pexels-photo-12362305.jpeg?auto=compress&cs=tinysrgb&w=160"
-              alt="Bannann peze — tranches de plantain vert frites deux fois, dorées et croustillantes"
-              class="w-20 h-20 rounded-xl object-cover shrink-0"
-            />
-            <div class="flex-1">
-              <h3 class="font-bold text-slate-800 text-sm">Bannann peze</h3>
-              <p class="text-xs text-slate-500 mt-0.5 mb-2">Plantains verts frits deux fois, aplatis et dorés à la perfection.</p>
-              <div class="flex items-center justify-between">
-                <span class="font-black text-orange-500">150 HTG</span>
-                <button class="bg-orange-500 hover:bg-orange-600 text-white w-8 h-8 rounded-lg font-bold text-lg flex items-center justify-center transition-colors">+</button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Section: Accompagnements -->
-      <section class="mb-8">
-        <h2 class="text-lg font-bold text-slate-800 mb-4">Accompagnements</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-          <!-- Riz djon djon -->
-          <div class="bg-white rounded-xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
-            <img
-              src="https://images.pexels.com/photos/27556972/pexels-photo-27556972.jpeg?auto=compress&cs=tinysrgb&w=160"
-              alt="Riz djon djon — riz au champignon noir haïtien avec pois et épices"
-              class="w-20 h-20 rounded-xl object-cover shrink-0"
-            />
-            <div class="flex-1">
-              <h3 class="font-bold text-slate-800 text-sm">Riz djon djon seul</h3>
-              <p class="text-xs text-slate-500 mt-0.5 mb-2">Riz au champignon noir haïtien, cuit avec pois et épices créoles.</p>
-              <div class="flex items-center justify-between">
-                <span class="font-black text-orange-500">250 HTG</span>
-                <button class="bg-orange-500 hover:bg-orange-600 text-white w-8 h-8 rounded-lg font-bold text-lg flex items-center justify-center transition-colors">+</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Soupe joumou -->
-          <div class="bg-white rounded-xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
-            <img
-              src="https://images.pexels.com/photos/8677177/pexels-photo-8677177.jpeg?auto=compress&cs=tinysrgb&w=160"
-              alt="Soupe joumou"
-              class="w-20 h-20 rounded-xl object-cover shrink-0"
-            />
-            <div class="flex-1">
-              <h3 class="font-bold text-slate-800 text-sm">Soupe joumou</h3>
-              <p class="text-xs text-slate-500 mt-0.5 mb-2">Soupe de courge à la haïtienne avec viande, légumes et vermicelles.</p>
-              <div class="flex items-center justify-between">
-                <span class="font-black text-orange-500">350 HTG</span>
-                <button class="bg-orange-500 hover:bg-orange-600 text-white w-8 h-8 rounded-lg font-bold text-lg flex items-center justify-center transition-colors">+</button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Section: Boissons -->
-      <section class="mb-8">
-        <h2 class="text-lg font-bold text-slate-800 mb-4">Boissons</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-          <!-- Jus naturel -->
-          <div class="bg-white rounded-xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
-            <img
-              src="https://images.pexels.com/photos/17612822/pexels-photo-17612822.jpeg?auto=compress&cs=tinysrgb&w=160"
-              alt="Jus naturel frais"
-              class="w-20 h-20 rounded-xl object-cover shrink-0"
-            />
-            <div class="flex-1">
-              <h3 class="font-bold text-slate-800 text-sm">Jus naturel frais</h3>
-              <p class="text-xs text-slate-500 mt-0.5 mb-2">Corossol, tamarin, mangue, papaye ou grenadille — pressé à la commande.</p>
-              <div class="flex items-center justify-between">
-                <span class="font-black text-orange-500">150 HTG</span>
-                <button class="bg-orange-500 hover:bg-orange-600 text-white w-8 h-8 rounded-lg font-bold text-lg flex items-center justify-center transition-colors">+</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Prestige bière -->
-          <div class="bg-white rounded-xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
-            <img
-              src="https://images.pexels.com/photos/4044674/pexels-photo-4044674.jpeg?auto=compress&cs=tinysrgb&w=160"
-              alt="Prestige — bière haïtienne"
-              class="w-20 h-20 rounded-xl object-cover shrink-0"
-            />
-            <div class="flex-1">
-              <h3 class="font-bold text-slate-800 text-sm">Prestige — bière haïtienne</h3>
-              <p class="text-xs text-slate-500 mt-0.5 mb-2">Bière blonde locale, servie bien fraîche, bouteille 33 cl.</p>
-              <div class="flex items-center justify-between">
-                <span class="font-black text-orange-500">200 HTG</span>
-                <button class="bg-orange-500 hover:bg-orange-600 text-white w-8 h-8 rounded-lg font-bold text-lg flex items-center justify-center transition-colors">+</button>
+              <div class="menu-footer">
+                <span class="menu-price">800 HTG</span>
+                <button class="menu-add-btn">+</button>
               </div>
             </div>
           </div>
@@ -393,58 +366,60 @@
           <div class="flex items-center gap-3">
             <img
               src="https://images.pexels.com/photos/37121088/pexels-photo-37121088.jpeg?auto=compress&cs=tinysrgb&w=80"
-              alt="Griot"
-              class="w-10 h-10 rounded-lg object-cover shrink-0"
-            />
+              alt="Griot" class="w-10 h-10 rounded-lg object-cover shrink-0" />
             <div class="flex-1 min-w-0">
               <p class="text-sm font-semibold text-slate-800 truncate">Griot + Riz djon djon</p>
               <p class="text-xs text-slate-500">750 HTG</p>
             </div>
             <div class="flex items-center gap-1.5 shrink-0">
-              <button class="w-6 h-6 rounded-md border border-slate-200 text-slate-600 text-sm font-bold hover:border-orange-400 flex items-center justify-center">&minus;</button>
+              <button
+                class="w-6 h-6 rounded-md border border-slate-200 text-slate-600 text-sm font-bold hover:border-orange-400 flex items-center justify-center">&minus;</button>
               <span class="text-sm font-bold w-4 text-center">1</span>
-              <button class="w-6 h-6 rounded-md bg-orange-500 text-white text-sm font-bold flex items-center justify-center">+</button>
+              <button
+                class="w-6 h-6 rounded-md bg-orange-500 text-white text-sm font-bold flex items-center justify-center">+</button>
             </div>
           </div>
 
           <div class="flex items-center gap-3">
             <img
               src="https://images.pexels.com/photos/34837746/pexels-photo-34837746.jpeg?auto=compress&cs=tinysrgb&w=80"
-              alt="Tassot de cabrit"
-              class="w-10 h-10 rounded-lg object-cover shrink-0"
-            />
+              alt="Tassot de cabrit" class="w-10 h-10 rounded-lg object-cover shrink-0" />
             <div class="flex-1 min-w-0">
               <p class="text-sm font-semibold text-slate-800 truncate">Tassot de cabrit</p>
               <p class="text-xs text-slate-500">850 HTG</p>
             </div>
             <div class="flex items-center gap-1.5 shrink-0">
-              <button class="w-6 h-6 rounded-md border border-slate-200 text-slate-600 text-sm font-bold hover:border-orange-400 flex items-center justify-center">&minus;</button>
+              <button
+                class="w-6 h-6 rounded-md border border-slate-200 text-slate-600 text-sm font-bold hover:border-orange-400 flex items-center justify-center">&minus;</button>
               <span class="text-sm font-bold w-4 text-center">1</span>
-              <button class="w-6 h-6 rounded-md bg-orange-500 text-white text-sm font-bold flex items-center justify-center">+</button>
+              <button
+                class="w-6 h-6 rounded-md bg-orange-500 text-white text-sm font-bold flex items-center justify-center">+</button>
             </div>
           </div>
 
           <div class="flex items-center gap-3">
             <img
               src="https://images.pexels.com/photos/17612822/pexels-photo-17612822.jpeg?auto=compress&cs=tinysrgb&w=80"
-              alt="Jus naturel"
-              class="w-10 h-10 rounded-lg object-cover shrink-0"
-            />
+              alt="Jus naturel" class="w-10 h-10 rounded-lg object-cover shrink-0" />
             <div class="flex-1 min-w-0">
               <p class="text-sm font-semibold text-slate-800 truncate">Jus naturel frais</p>
               <p class="text-xs text-slate-500">150 HTG</p>
             </div>
             <div class="flex items-center gap-1.5 shrink-0">
-              <button class="w-6 h-6 rounded-md border border-slate-200 text-slate-600 text-sm font-bold hover:border-orange-400 flex items-center justify-center">&minus;</button>
+              <button
+                class="w-6 h-6 rounded-md border border-slate-200 text-slate-600 text-sm font-bold hover:border-orange-400 flex items-center justify-center">&minus;</button>
               <span class="text-sm font-bold w-4 text-center">2</span>
-              <button class="w-6 h-6 rounded-md bg-orange-500 text-white text-sm font-bold flex items-center justify-center">+</button>
+              <button
+                class="w-6 h-6 rounded-md bg-orange-500 text-white text-sm font-bold flex items-center justify-center">+</button>
             </div>
           </div>
         </div>
 
         <!-- Coupon -->
         <div class="flex gap-2 mb-4">
-          <input type="text" placeholder="Code promo..." class="flex-1 text-xs border border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-orange-400" value="MARIE15" />
+          <input type="text" placeholder="Code promo..."
+            class="flex-1 text-xs border border-slate-200 rounded-lg px-3 py-2 outline-none focus:border-orange-400"
+            value="MARIE15" />
           <button class="bg-green-100 text-green-700 text-xs font-semibold px-3 py-2 rounded-lg">Appliqué</button>
         </div>
 
@@ -470,7 +445,12 @@
 
         <!-- Address -->
         <div class="bg-slate-50 rounded-xl p-3 mb-4 flex gap-2 text-xs text-slate-600">
-          <svg class="w-4 h-4 text-orange-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <svg class="w-4 h-4 text-orange-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round"
+              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
           <div class="flex-1">
             <p class="font-semibold text-slate-700">Livraison à</p>
             <p>Rue du Commerce, Gonaïves</p>
@@ -484,56 +464,76 @@
           <div class="grid grid-cols-3 gap-1.5">
 
             <!-- MonCash -->
-            <label class="pay-label flex flex-col items-center gap-1 border-2 border-orange-400 rounded-xl p-2 cursor-pointer bg-orange-50" onclick="selectPayMethod(this)">
+            <label
+              class="pay-label flex flex-col items-center gap-1 border-2 border-orange-400 rounded-xl p-2 cursor-pointer bg-orange-50"
+              onclick="selectPayMethod(this)">
               <input type="radio" name="pay-method" value="moncash" class="hidden" checked />
               <span class="text-xs font-black leading-none" style="color:#EE1C25;">Mon</span>
               <span class="text-[9px] text-slate-600 font-bold leading-none">Cash</span>
             </label>
 
             <!-- NatCash -->
-            <label class="pay-label flex flex-col items-center gap-1 border-2 border-slate-200 rounded-xl p-2 cursor-pointer hover:border-slate-300" onclick="selectPayMethod(this)">
+            <label
+              class="pay-label flex flex-col items-center gap-1 border-2 border-slate-200 rounded-xl p-2 cursor-pointer hover:border-slate-300"
+              onclick="selectPayMethod(this)">
               <input type="radio" name="pay-method" value="natcash" class="hidden" />
               <svg viewBox="0 0 60 17" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-auto">
-                <rect width="60" height="17" rx="3" fill="#0057B8"/>
-                <text x="30" y="12.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="900" fill="white">NatCash</text>
+                <rect width="60" height="17" rx="3" fill="#0057B8" />
+                <text x="30" y="12.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="8"
+                  font-weight="900" fill="white">NatCash</text>
               </svg>
               <span class="text-[9px] text-slate-600 font-bold leading-none">NatCash</span>
             </label>
 
             <!-- Visa -->
-            <label class="pay-label flex flex-col items-center gap-1 border-2 border-slate-200 rounded-xl p-2 cursor-pointer hover:border-slate-300" onclick="selectPayMethod(this)">
+            <label
+              class="pay-label flex flex-col items-center gap-1 border-2 border-slate-200 rounded-xl p-2 cursor-pointer hover:border-slate-300"
+              onclick="selectPayMethod(this)">
               <input type="radio" name="pay-method" value="card" class="hidden" />
               <svg viewBox="0 0 80 25" xmlns="http://www.w3.org/2000/svg" class="h-4 w-auto">
-                <text x="2" y="22" font-family="'Arial Black',Arial,sans-serif" font-size="22" font-weight="900" fill="#1A1F71" letter-spacing="-1">VISA</text>
+                <text x="2" y="22" font-family="'Arial Black',Arial,sans-serif" font-size="22" font-weight="900"
+                  fill="#1A1F71" letter-spacing="-1">VISA</text>
               </svg>
               <span class="text-[9px] text-slate-600 font-bold leading-none">Visa</span>
             </label>
 
             <!-- Mastercard -->
-            <label class="pay-label flex flex-col items-center gap-1 border-2 border-slate-200 rounded-xl p-2 cursor-pointer hover:border-slate-300" onclick="selectPayMethod(this)">
+            <label
+              class="pay-label flex flex-col items-center gap-1 border-2 border-slate-200 rounded-xl p-2 cursor-pointer hover:border-slate-300"
+              onclick="selectPayMethod(this)">
               <input type="radio" name="pay-method" value="card" class="hidden" />
               <svg viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" class="h-4 w-auto">
-                <circle cx="14" cy="12" r="10" fill="#EB001B"/>
-                <circle cx="24" cy="12" r="10" fill="#F79E1B"/>
-                <path d="M19,4.5 A10,10,0,0,1,19,19.5 A10,10,0,0,0,19,4.5Z" fill="#FF5F00"/>
+                <circle cx="14" cy="12" r="10" fill="#EB001B" />
+                <circle cx="24" cy="12" r="10" fill="#F79E1B" />
+                <path d="M19,4.5 A10,10,0,0,1,19,19.5 A10,10,0,0,0,19,4.5Z" fill="#FF5F00" />
               </svg>
               <span class="text-[9px] text-slate-600 font-bold leading-none">Mastercard</span>
             </label>
 
             <!-- PayPal -->
-            <label class="pay-label flex flex-col items-center gap-1 border-2 border-slate-200 rounded-xl p-2 cursor-pointer hover:border-slate-300" onclick="selectPayMethod(this)">
+            <label
+              class="pay-label flex flex-col items-center gap-1 border-2 border-slate-200 rounded-xl p-2 cursor-pointer hover:border-slate-300"
+              onclick="selectPayMethod(this)">
               <input type="radio" name="pay-method" value="paypal" class="hidden" />
               <svg viewBox="0 0 60 22" xmlns="http://www.w3.org/2000/svg" class="h-4 w-auto">
-                <text x="0" y="18" font-family="'Arial Black',Arial,sans-serif" font-size="16" font-weight="900" fill="#003087">Pay</text>
-                <text x="28" y="18" font-family="'Arial Black',Arial,sans-serif" font-size="16" font-weight="900" fill="#009CDE">Pal</text>
+                <text x="0" y="18" font-family="'Arial Black',Arial,sans-serif" font-size="16" font-weight="900"
+                  fill="#003087">Pay</text>
+                <text x="28" y="18" font-family="'Arial Black',Arial,sans-serif" font-size="16" font-weight="900"
+                  fill="#009CDE">Pal</text>
               </svg>
               <span class="text-[9px] text-slate-600 font-bold leading-none">PayPal</span>
             </label>
 
             <!-- Cash -->
-            <label class="pay-label flex flex-col items-center gap-1 border-2 border-slate-200 rounded-xl p-2 cursor-pointer hover:border-slate-300" onclick="selectPayMethod(this)">
+            <label
+              class="pay-label flex flex-col items-center gap-1 border-2 border-slate-200 rounded-xl p-2 cursor-pointer hover:border-slate-300"
+              onclick="selectPayMethod(this)">
               <input type="radio" name="pay-method" value="cash" class="hidden" />
-              <svg viewBox="0 0 24 24" class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg viewBox="0 0 24 24" class="w-4 h-4 text-green-600" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <rect x="2" y="6" width="20" height="12" rx="2" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
               <span class="text-[9px] text-slate-600 font-bold leading-none">Livraison</span>
             </label>
 
@@ -549,12 +549,12 @@
         <script>
           function selectPayMethod(label) {
             document.querySelectorAll('.pay-label').forEach(l => {
-              l.classList.remove('border-orange-400','bg-orange-50','border-blue-400','bg-blue-50','border-indigo-400','bg-indigo-50','border-yellow-400','bg-yellow-50','border-green-400','bg-green-50');
+              l.classList.remove('border-orange-400', 'bg-orange-50', 'border-blue-400', 'bg-blue-50', 'border-indigo-400', 'bg-indigo-50', 'border-yellow-400', 'bg-yellow-50', 'border-green-400', 'bg-green-50');
               l.classList.add('border-slate-200');
             });
             label.classList.remove('border-slate-200');
             const val = label.querySelector('input').value;
-            const map = { moncash:'orange', natcash:'blue', card:'indigo', paypal:'yellow', cash:'green' };
+            const map = { moncash: 'orange', natcash: 'blue', card: 'indigo', paypal: 'yellow', cash: 'green' };
             const c = map[val] || 'orange';
             label.classList.add(`border-${c}-400`, `bg-${c}-50`);
             label.querySelector('input').checked = true;
@@ -573,7 +573,49 @@
     </aside>
 
   </div>
-
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-white py-10 md:py-12">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="mb-4">
+            <img src="/assets/images/NK_LOGO.png" alt="NK Delivery"
+              class="h-14 w-auto object-contain bg-white rounded-xl p-1.5">
+          </div>
+          <p class="text-slate-400 text-sm">La plateforme de référence pour commander vos repas à Gonaïves.</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm mb-4 text-slate-200">Liens utiles</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="/pages/public/restaurants.html" class="hover:text-orange-400">Restaurants</a></li>
+            <li><a href="#comment" class="hover:text-orange-400">Comment ça marche</a></li>
+            <li><a href="/pages/auth/signup.html" class="hover:text-orange-400">Devenir livreur</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm mb-4 text-slate-200">Pour les restaurants</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="/pages/" class="hover:text-orange-400">Inscrire mon restaurant</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm mb-4 text-slate-200">Contact</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li>contact@nkdelivery.ht</li>
+            <li>+509 3XXX-XXXX</li>
+            <li>Gonaïves, Haïti</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 pt-6 flex flex-col md:flex-row items-center justify-center gap-2">
+        <p class="text-slate-500 text-xs">© 2026 NK Delivery. Tous droits réservés.</p>
+        <div class="flex gap-4 text-xs text-slate-500">
+          <a href="#" class="hover:text-slate-300">Politique de confidentialité</a>
+          <a href="#" class="hover:text-slate-300">Conditions d'utilisation</a>
+        </div>
+      </div>
+    </div>
+  </footer>
   <script>
     function toggleMobileNav() {
       const nav = document.getElementById('mobileNav');
@@ -592,4 +634,5 @@
   </script>
 
 </body>
+
 </html>
