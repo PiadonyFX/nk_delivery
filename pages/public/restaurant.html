@@ -544,7 +544,7 @@
           class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-xl text-center transition-colors text-sm">
           Commander &mdash; 1 665 HTG &rarr;
         </button>
-        <p class="text-xs text-slate-400 text-center mt-2">Livraison estimée : 25–35 min</p>
+        <p class="text-xs text-slate-700 text-center mt-2">Livraison estimée : 25–35 min</p>
 
         <script>
           function selectPayMethod(label) {
@@ -561,11 +561,11 @@
           }
           function goToPayment() {
             const m = document.querySelector('[name=pay-method]:checked').value;
-            if (m === 'moncash') location.href = 'payment-mobile.html?method=moncash';
-            else if (m === 'natcash') location.href = 'payment-mobile.html?method=natcash';
-            else if (m === 'card') location.href = 'payment-card.html';
-            else if (m === 'paypal') location.href = 'payment-paypal.html';
-            else location.href = 'commande.html';
+            if (m === 'moncash') location.href = '/pages/payment/payment-mobile.html?method=moncash';
+            else if (m === 'natcash') location.href = '/pages/payment/payment-mobile.html?method=natcash';
+            else if (m === 'card') location.href = '/pages/payment/payment-card.html';
+            else if (m === 'paypal') location.href = '/pages/payment/payment-paypal.html';
+            else location.href = '/pages/payment/commande.html';
           }
         </script>
 

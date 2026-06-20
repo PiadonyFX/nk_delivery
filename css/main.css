@@ -3,6 +3,7 @@
 @import '/components/statusresto.css';
 @import '/components/navbar.css';
 @import '/components/cardplats.css';
+@import '/components/about.css';
 
     /* paj restoran yo(filtre ki sekleksyone an) */
 .filter-active {

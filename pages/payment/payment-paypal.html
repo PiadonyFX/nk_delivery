@@ -16,16 +16,16 @@
   <!-- NAVBAR -->
   <nav class="bg-white shadow-sm sticky top-0 z-50">
     <div class="max-w-5xl mx-auto px-4 md:px-6 flex items-center justify-between h-16">
-      <a href="index.html" class="flex items-center gap-0.5">
-        <img src="NK_LOGO.png" alt="NK Delivery" class="h-[50px] w-auto object-contain">
+      <a href="/index.html" class="flex items-center gap-0.5">
+        <img src="/assets/images/NK_LOGO.png" alt="NK Delivery" class="h-[50px] w-auto object-contain">
         <span class="font-black text-base tracking-tight leading-none"><span class="text-orange-500">NK</span><span class="text-slate-800"> DELIVERY</span></span>
       </a>
       <div class="hidden sm:flex items-center gap-2 text-sm text-slate-500">
-        <a href="restaurant.html" class="hover:text-orange-500">Mon panier</a>
+        <a href="/pages/public/restaurant.html" class="hover:text-orange-500">Mon panier</a>
         <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 18l6-6-6-6"/></svg>
         <span class="text-orange-500 font-semibold">Paiement</span>
       </div>
-      <a href="login.html" class="text-sm font-semibold text-slate-600 hover:text-orange-500">Mon compte</a>
+      <a href="/pages/auth/login.html" class="text-sm font-semibold text-slate-600 hover:text-orange-500">Mon compte</a>
     </div>
   </nav>
 
@@ -144,7 +144,7 @@
               <label class="block text-xs font-bold text-slate-600 mb-1.5 uppercase tracking-wide">Expiration</label>
               <input type="text" placeholder="MM/AA" maxlength="5"
                 class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm font-mono tracking-widest text-slate-700 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition"
-                oninput="let v=this.value.replace(/\D/g,'').slice(0,4); this.value=v.length>=3?v.slice(0,2)+'/'+v.slice(2):v" />
+                oninput="let vi=this.value.replace(/\D/g,'').slice(0,4); this.value=vi.length>=3?vi.slice(0,2)+'/'+vi.slice(2):vi" />
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-600 mb-1.5 uppercase tracking-wide">CVV</label>
@@ -175,7 +175,7 @@
         </div>
       </div>
 
-      <a href="restaurant.html"
+      <a href="/pages/public/restaurant.html"
         class="flex items-center gap-2 text-sm text-slate-500 hover:text-orange-500 transition-colors justify-center">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M15 19l-7-7 7-7"/></svg>
         Retour au panier
@@ -243,10 +243,13 @@
         <p class="text-xs text-slate-500 mb-0.5">Numéro de commande</p>
         <p class="font-black text-slate-800 tracking-widest text-sm">#NK-2024-08419</p>
       </div>
-      <a href="commande.html"
-        class="block w-full text-white font-bold py-3.5 rounded-xl transition-colors text-sm" style="background:#003087;">
+      <a href="/pages/clients/commande.html"
+        class="mb-2 block w-full text-white font-bold py-3.5 rounded-xl transition-colors text-sm" style="background:#003087;">
         Suivre ma commande &rarr;
       </a>
+       <a href="/pages/public/restaurants.html"
+        class="block w-full text-white font-bold py-3.5 rounded-xl transition-colors text-sm" style="background:#003087;">
+        Retour &rarr;
     </div>
   </div>
 
