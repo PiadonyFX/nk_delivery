@@ -1,8 +1,4 @@
 @import './variables.css';
-@import '/components/cardresto.css';
-@import '/components/statusresto.css';
-@import '/components/navbar.css';
-@import '/components/cardplats.css';
 
 /* ===== MENU SYSTEM (VARIABLE VERSION) ===== */
 
@@ -128,4 +124,3 @@
   filter: brightness(0.9);
 }
 
-/* dfhfgjkl;jhvcxghjklghcfhjklhgvb */

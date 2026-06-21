@@ -1,7 +1,6 @@
 @import './variables.css';
-@import '/components/cardresto.css';
-@import '/components/statusresto.css';
-@import '/components/navbar.css';/* NAVBAR */
+
+/* NAVBAR */
 
 .navbar{
   background:var(--color-light);

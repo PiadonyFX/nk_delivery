@@ -75,11 +75,11 @@
 
       <div class="mobile-nav-container">
 
-        <a href="/index.html" class="mobile-link active">
+        <a href="/index.html" class="mobile-link">
           Accueil
         </a>
 
-        <a href="/pages/public/restaurants.html" class="mobile-link">
+        <a href="/pages/public/restaurants.html" class="mobile-link active">
           Restaurants
         </a>
 
@@ -225,20 +225,13 @@
     </div>
     <!-- Menu tabs -->
     <div class="max-w-7xl mx-auto px-6 border-t border-slate-100">
-      <div class="flex gap-6 overflow-x-auto">
-        <button class="tab-active text-sm font-semibold py-3 border-b-2 whitespace-nowrap">Populaires</button>
-        <button
-          class="text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Entrées
-          &amp; Fritay</button>
-        <button
-          class="text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Plats
-          principaux</button>
-        <button
-          class="text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Accompagnements</button>
-        <button
-          class="text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Boissons</button>
-        <button
-          class="text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Desserts</button>
+      <div class="flex gap-6 overflow-x-auto" id="menu-tabs">
+        <button onclick="switchTab(this, 'populaires')" class="menu-tab tab-active text-sm font-semibold py-3 border-b-2 whitespace-nowrap">Populaires</button>
+        <button onclick="switchTab(this, 'entrees')" class="menu-tab text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Entrées &amp; Fritay</button>
+        <button onclick="switchTab(this, 'plats')" class="menu-tab text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Plats principaux</button>
+        <button onclick="switchTab(this, 'accompagnements')" class="menu-tab text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Accompagnements</button>
+        <button onclick="switchTab(this, 'boissons')" class="menu-tab text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Boissons</button>
+        <button onclick="switchTab(this, 'desserts')" class="menu-tab text-sm font-semibold py-3 border-b-2 border-transparent text-slate-500 whitespace-nowrap hover:text-orange-500">Desserts</button>
       </div>
     </div>
   </div>
@@ -261,7 +254,7 @@
       </div>
 
       <!-- SECTION MENU -->
-      <section class="menu-section">
+      <section class="menu-section" id="section-populaires">
 
         <h2 class="menu-section-title">Les incontournables</h2>
 
@@ -352,6 +345,93 @@
             </div>
           </div>
 
+        </div>
+      </section>
+
+      <!-- Sections des autres catégories (masquées par défaut) -->
+      <section class="menu-section hidden" id="section-entrees">
+        <h2 class="menu-section-title">Entrées &amp; Fritay</h2>
+        <div class="menu-grid">
+          <div class="menu-card">
+            <img src="https://images.pexels.com/photos/6210439/pexels-photo-6210439.jpeg?auto=compress&cs=tinysrgb&w=160" alt="Akra" class="menu-image">
+            <div class="menu-body">
+              <h3 class="menu-title">Akra de malanga</h3>
+              <p class="menu-description">Beignets de malanga croustillants, servis avec pikliz maison.</p>
+              <div class="menu-footer"><span class="menu-price">180 HTG</span><button class="menu-add-btn">+</button></div>
+            </div>
+          </div>
+          <div class="menu-card">
+            <img src="https://images.pexels.com/photos/5908226/pexels-photo-5908226.jpeg?auto=compress&cs=tinysrgb&w=160" alt="Bannann peze" class="menu-image">
+            <div class="menu-body">
+              <h3 class="menu-title">Bannann peze</h3>
+              <p class="menu-description">Tranches de plantain frites, salées et croustillantes.</p>
+              <div class="menu-footer"><span class="menu-price">120 HTG</span><button class="menu-add-btn">+</button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-section hidden" id="section-plats">
+        <h2 class="menu-section-title">Plats principaux</h2>
+        <div class="menu-grid">
+          <div class="menu-card">
+            <img src="https://images.pexels.com/photos/34134206/pexels-photo-34134206.jpeg?auto=compress&cs=tinysrgb&w=160" alt="Poulet" class="menu-image">
+            <div class="menu-body">
+              <h3 class="menu-title">Poulet en sauce créole</h3>
+              <p class="menu-description">Poulet mijoté en sauce créole épicée, riz blanc et pois.</p>
+              <div class="menu-footer"><span class="menu-price">600 HTG</span><button class="menu-add-btn">+</button></div>
+            </div>
+          </div>
+          <div class="menu-card">
+            <img src="https://images.pexels.com/photos/27556972/pexels-photo-27556972.jpeg?auto=compress&cs=tinysrgb&w=160" alt="Riz ak pois" class="menu-image">
+            <div class="menu-body">
+              <h3 class="menu-title">Riz ak pois noirs</h3>
+              <p class="menu-description">Riz collé aux pois noirs, beurre clarifié et épices créoles.</p>
+              <div class="menu-footer"><span class="menu-price">350 HTG</span><button class="menu-add-btn">+</button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-section hidden" id="section-accompagnements">
+        <h2 class="menu-section-title">Accompagnements</h2>
+        <div class="menu-grid">
+          <div class="menu-card">
+            <img src="https://images.pexels.com/photos/12362305/pexels-photo-12362305.jpeg?auto=compress&cs=tinysrgb&w=160" alt="Pikliz" class="menu-image">
+            <div class="menu-body">
+              <h3 class="menu-title">Pikliz maison</h3>
+              <p class="menu-description">Chou mariné épicé, carottes et piments — condiment haïtien.</p>
+              <div class="menu-footer"><span class="menu-price">80 HTG</span><button class="menu-add-btn">+</button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-section hidden" id="section-boissons">
+        <h2 class="menu-section-title">Boissons</h2>
+        <div class="menu-grid">
+          <div class="menu-card">
+            <img src="https://images.pexels.com/photos/17612822/pexels-photo-17612822.jpeg?auto=compress&cs=tinysrgb&w=160" alt="Jus" class="menu-image">
+            <div class="menu-body">
+              <h3 class="menu-title">Jus naturel frais</h3>
+              <p class="menu-description">Jus de fruit de la passion, grenadine ou corossol — 100% naturel.</p>
+              <div class="menu-footer"><span class="menu-price">150 HTG</span><button class="menu-add-btn">+</button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-section hidden" id="section-desserts">
+        <h2 class="menu-section-title">Desserts</h2>
+        <div class="menu-grid">
+          <div class="menu-card">
+            <img src="https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=160" alt="Gateau siwo" class="menu-image">
+            <div class="menu-body">
+              <h3 class="menu-title">Gâteau siwo</h3>
+              <p class="menu-description">Gâteau haïtien au sirop de canne, moelleux et parfumé.</p>
+              <div class="menu-footer"><span class="menu-price">200 HTG</span><button class="menu-add-btn">+</button></div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -565,7 +645,7 @@
             else if (m === 'natcash') location.href = '/pages/payment/payment-mobile.html?method=natcash';
             else if (m === 'card') location.href = '/pages/payment/payment-card.html';
             else if (m === 'paypal') location.href = '/pages/payment/payment-paypal.html';
-            else location.href = '/pages/payment/commande.html';
+            else location.href = '/pages/clients/commande.html';
           }
         </script>
 
@@ -595,7 +675,7 @@
         <div>
           <h4 class="font-bold text-sm mb-4 text-slate-200">Pour les restaurants</h4>
           <ul class="space-y-2 text-sm text-slate-400">
-            <li><a href="/pages/" class="hover:text-orange-400">Inscrire mon restaurant</a></li>
+            <li><a href="/pages/auth/signup.html" class="hover:text-orange-400">Inscrire mon restaurant</a></li>
           </ul>
         </div>
         <div>
@@ -617,6 +697,21 @@
     </div>
   </footer>
   <script>
+    function switchTab(btn, sectionId) {
+      document.querySelectorAll('.menu-tab').forEach(b => {
+        b.classList.remove('tab-active');
+        b.classList.add('border-transparent', 'text-slate-500');
+      });
+      btn.classList.add('tab-active');
+      btn.classList.remove('border-transparent', 'text-slate-500');
+
+      const sections = ['populaires','entrees','plats','accompagnements','boissons','desserts'];
+      sections.forEach(s => {
+        const el = document.getElementById('section-' + s);
+        if (el) el.classList.toggle('hidden', s !== sectionId);
+      });
+    }
+
     function toggleMobileNav() {
       const nav = document.getElementById('mobileNav');
       const menuIcon = document.getElementById('menuIcon');

@@ -1,7 +1,5 @@
 @import './variables.css';
-@import '/components/cardresto.css';
-@import '/components/statusresto.css';
-@import '/components/navbar.css';
+
 .cardresto{
     background-color: var(--color-light);
     border-radius: 1rem;
